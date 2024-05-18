@@ -20,7 +20,7 @@ include 'components/wishlist_cart.php';
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>KinBech.Com</title>
+   <title>CirCol - Homepage</title>
 
    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
    
@@ -45,37 +45,14 @@ include 'components/wishlist_cart.php';
 
       <div class="swiper-slide slide">
          <div class="image">
-            <img src="images/home-img-1.png" alt="">
+            <img src="images/robot-sirkit.png" alt="" style=" height: 420px;">
          </div>
          <div class="content">
             <span>Upto 50% Off</span>
             <h3>Latest Smartphones</h3>
-            <a href="category.php?category=smartphone" class="btn">Shop Now</a>
+            <a href="shop.php" class="btn">Shop Now</a>
          </div>
-      </div>
-
-      <div class="swiper-slide slide">
-         <div class="image">
-            <img src="images/home-img-2.png" alt="">
-         </div>
-         <div class="content">
-            <span>Upto 50% off</span>
-            <h3>Latest Watches</h3>
-            <a href="category.php?category=watch" class="btn">Shop Now.</a>
-         </div>
-      </div>
-
-      <div class="swiper-slide slide">
-         <div class="image">
-            <img src="images/home-img-3.png" alt="">
-         </div>
-         <div class="content">
-            <span>upto 50% off</span>
-            <h3>Latest headsets</h3>
-            <a href="shop.php" class="btn">Shop Now.</a>
-         </div>
-      </div>
-
+      </div> 
    </div>
 
       <div class="swiper-pagination"></div>
@@ -94,44 +71,19 @@ include 'components/wishlist_cart.php';
 
    <div class="swiper-wrapper">
 
-   <a href="category.php?category=laptop" class="swiper-slide slide">
-      <img src="images/icon-1.png" alt="">
-      <h3>Laptop</h3>
-   </a>
-
-   <a href="category.php?category=tv" class="swiper-slide slide">
-      <img src="images/icon-2.png" alt="">
-      <h3>Television</h3>
-   </a>
-
-   <a href="category.php?category=camera" class="swiper-slide slide">
-      <img src="images/icon-3.png" alt="">
-      <h3>Camera</h3>
-   </a>
-
-   <a href="category.php?category=mouse" class="swiper-slide slide">
-      <img src="images/icon-4.png" alt="">
-      <h3>Mouse</h3>
-   </a>
-
-   <a href="category.php?category=fridge" class="swiper-slide slide">
-      <img src="images/icon-5.png" alt="">
-      <h3>Fridge</h3>
-   </a>
-
-   <a href="category.php?category=washing" class="swiper-slide slide">
+   <a href="category.php?category=Lanyard" class="swiper-slide slide">
       <img src="images/icon-6.png" alt="">
-      <h3>Washing machine</h3>
+      <h3>Lanyard</h3>
    </a>
 
-   <a href="category.php?category=smartphone" class="swiper-slide slide">
+   <a href="category.php?category=Shirt" class="swiper-slide slide">
       <img src="images/icon-7.png" alt="">
-      <h3>Smartphone</h3>
+      <h3>Shirt</h3>
    </a>
 
-   <a href="category.php?category=watch" class="swiper-slide slide">
+   <a href="category.php?category=Others" class="swiper-slide slide">
       <img src="images/icon-8.png" alt="">
-      <h3>Watch</h3>
+      <h3>Other Merch</h3>
    </a>
 
    </div>
@@ -142,9 +94,15 @@ include 'components/wishlist_cart.php';
 
 </section>
 
+<section>
+
+   <img src="images/little_banner.png" alt="" style="width:1160px; height:400px;">
+
+</section>
+
 <section class="home-products">
 
-   <h1 class="heading">Latest products</h1>
+   <h1 class="heading">FEATURED MERCH</h1>
 
    <div class="swiper products-slider">
 
@@ -189,11 +147,6 @@ include 'components/wishlist_cart.php';
 
 
 
-
-
-
-
-
 <?php include 'components/footer.php'; ?>
 
 <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
@@ -214,10 +167,10 @@ var swiper = new Swiper(".home-slider", {
  var swiper = new Swiper(".category-slider", {
    loop:true,
    spaceBetween: 20,
-   pagination: {
-      el: ".swiper-pagination",
-      clickable:true,
-   },
+   // pagination: {
+   //    el: ".swiper-pagination",
+   //    clickable:true,
+   // },
    breakpoints: {
       0: {
          slidesPerView: 2,
@@ -225,22 +178,22 @@ var swiper = new Swiper(".home-slider", {
       650: {
         slidesPerView: 3,
       },
-      768: {
-        slidesPerView: 4,
-      },
-      1024: {
-        slidesPerView: 5,
-      },
+      // 768: {
+      //   slidesPerView: 4,
+      // },
+      // 1024: {
+      //   slidesPerView: 5,
+      // },
    },
 });
 
 var swiper = new Swiper(".products-slider", {
    loop:true,
    spaceBetween: 20,
-   pagination: {
-      el: ".swiper-pagination",
-      clickable:true,
-   },
+   // pagination: {
+   //    el: ".swiper-pagination",
+   //    clickable:true,
+   // },
    breakpoints: {
       550: {
         slidesPerView: 2,

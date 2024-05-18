@@ -1,8 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700&display=swap');
 
 :root{
-   --main-color:#2980b9;
+   --main-color: #1F4690;
+   --blue: #231955;
    --orange:#f39c12;
+   --yellow: #E8AA42;
+   --light-yellow:#FFE5B4;
    --red:#e74c3c;
    --black:#333;
    --white:#fff;
@@ -83,7 +86,7 @@ section{
 }
 
 .btn{
-   background-color: var(--main-color);
+   background-color: var(--yellow);
 }
 
 .option-btn{
@@ -151,7 +154,25 @@ section{
       transform: translateY(1rem);
    }
 }
+#menu-btn {
+   color: #ff0000;
+}
 
+a[href="search_page.php"] .fas.fa-search {
+   color:  #231955; 
+}
+
+a[href="wishlist.php"] .fas.fa-heart {
+   color: #1F4690   ; 
+}
+
+a[href="cart.php"] .fas.fa-shopping-cart {
+   color: #1F4690; 
+}
+
+#user-btn {
+   color: #1F4690; 
+}
 .header{
    position: sticky;
    top:0; left:0; right:0;
@@ -589,8 +610,8 @@ section{
 .form-container form{
    background-color: var(--white);
    padding:2rem;
-   border-radius: .5rem;
-   border:var(--border);
+   border-radius: 2rem;
+   /* border:var(--border); */
    box-shadow: var(--box-shadow);
    text-align: center;
    margin:0 auto;
@@ -976,6 +997,7 @@ section{
 }
 
 .footer .credit{
+   height: 20px;
    text-align: center;
    padding: 2.5rem 2rem;
    border-top: var(--border);
