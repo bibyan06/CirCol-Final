@@ -15,12 +15,13 @@
 
    <section class="flex">
 
-      <a href="../admin/dashboard.php" class="logo">Admin<span>Panel</span></a>
+      <img href="../admin/dashboard.php" src= "../images/circol logo.png" alt="Logo" style="vertical-align: middle; width: 150px; height: 50px;">
 
       <nav class="navbar">
          <a href="../admin/dashboard.php">Home</a>
          <a href="../admin/products.php">Products</a>
          <a href="../admin/placed_orders.php">Orders</a>
+         <a href="../admin/to_pickup.php">To Pick up</a>
          <a href="../admin/admin_accounts.php">Admins</a>
          <a href="../admin/users_accounts.php">Users</a>
          <a href="../admin/messages.php">Messages</a>
@@ -39,11 +40,7 @@
          ?>
          <p><?= $fetch_profile['name']; ?></p>
          <a href="../admin/update_profile.php" class="btn">Update Profile</a>
-         <div class="flex-btn">
-            <a href="../admin/register_admin.php" class="option-btn">Register</a>
-            <a href="../admin/admin_login.php" class="option-btn">Login</a>
-         </div>
-         <a href="../components/admin_logout.php" class="delete-btn" onclick="return confirm('logout from the website?');">logout</a> 
+         <a href="../components/admin_logout.php" class="delete-btn" onclick="return confirm('Are you sure you want to log out?');">logout</a> 
       </div>
 
    </section>

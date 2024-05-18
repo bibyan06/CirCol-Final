@@ -95,19 +95,19 @@ if(isset($_GET['delete'])){
    <form action="" method="post" enctype="multipart/form-data">
       <div class="flex">
          <div class="inputBox">
-            <span>Product Name (required)</span>
-            <input type="text" class="box" required maxlength="100" placeholder="enter product name" name="name">
+            <span>Product Name*</span>
+            <input type="text" class="box" required maxlength="100" placeholder="Enter product name" name="name">
          </div>
          <div class="inputBox">
-            <span>Product Price (required)</span>
-            <input type="text" min="0" class="box" required max="9999999999" placeholder="enter product price" onkeypress="if(this.value.length == 10) return false;" name="price">
+            <span>Product Price*</span>
+            <input type="text" min="0" class="box" required max="9999999999" placeholder="Enter product price" onkeypress="if(this.value.length == 10) return false;" name="price">
          </div>
         <div class="inputBox">
-            <span>Image 01 (required)</span>
+            <span>Image*</span>
             <input type="file" name="image_01" accept="image/jpg, image/jpeg, image/png, image/webp" class="box" required>
         </div>
         <div class="inputBox">
-            <span>Category (required)</span>
+            <span>Category*</span>
             <select class="box" required name="category">
                <option value="" disabled selected>Select a category</option>
                <option value="Shirt">Shirt</option>
@@ -116,12 +116,12 @@ if(isset($_GET['delete'])){
             </select>
          </div>
         <div class="inputBox">
-            <span>Stock (required)</span>
-            <input type="text" min="0" class="box" required max="9999999999" placeholder="enter product stock" onkeypress="if(this.value.length == 10) return false;" name="stock">
+            <span>Stock*</span>
+            <input type="text" min="0" class="box" required max="9999999999" placeholder="Enter product stock" onkeypress="if(this.value.length == 10) return false;" name="stock">
         </div>
          <div class="inputBox">
-            <span>Product description (required)</span>
-            <textarea name="details" placeholder="enter product details" class="box" required maxlength="500" cols="30" rows="10"></textarea>
+            <span>Product description*</span>
+            <textarea name="details" placeholder="Enter product details" class="box" required maxlength="500" cols="30" rows="10"></textarea>
          </div>
       </div>
       
@@ -132,7 +132,7 @@ if(isset($_GET['delete'])){
 
 <section class="show-products">
 
-   <h1 class="heading">Products Added.</h1>
+   <h1 class="heading">Products Added</h1>
 
    <div class="box-container">
 

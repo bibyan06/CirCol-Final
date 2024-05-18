@@ -15,7 +15,7 @@
 
    <section class="flex">
 
-      <img src= "images/circol logo.png" alt="Logo" style="vertical-align: middle; width: 150px; height: 50px;">
+      <img href="home.php" src= "images/circol logo.png" alt="Logo" style="vertical-align: middle; width: 150px; height: 50px;">
 
       <nav class="navbar">
          <a href="home.php">Home</a>

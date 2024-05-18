@@ -52,9 +52,9 @@ if(!isset($admin_id)){
                }
             }
          ?>
-         <h3><span>Php.</span><?= $total_pendings; ?><span>/-</span></h3>
+         <h3><span>PHP</span><?= $total_pendings; ?><span>/-</span></h3>
          <p>Total pendings</p>
-         <a href="placed_orders.php" class="btn">See Orders.</a>
+         <a href="placed_orders.php" class="btn">See Orders</a>
       </div>
 
       <div class="box">
@@ -80,8 +80,8 @@ if(!isset($admin_id)){
             $number_of_orders = $select_orders->rowCount()
          ?>
          <h3><?= $number_of_orders; ?></h3>
-         <p>Orders Placed.</p>
-         <a href="placed_orders.php" class="btn">See orders.</a>
+         <p>Orders Placed</p>
+         <a href="placed_orders.php" class="btn">See orders</a>
       </div>
 
       <div class="box">

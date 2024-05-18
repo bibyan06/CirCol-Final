@@ -48,8 +48,8 @@ include 'components/wishlist_cart.php';
             <img src="images/robot-sirkit.png" alt="" style=" height: 420px;">
          </div>
          <div class="content">
-            <span>Upto 50% Off</span>
-            <h3>Latest Smartphones</h3>
+            <span>Empower Your Code: Sir Kit's IT Gear – </span>
+            <h3>Where Style Meets Technology.</h3>
             <a href="shop.php" class="btn">Shop Now</a>
          </div>
       </div> 
@@ -96,7 +96,7 @@ include 'components/wishlist_cart.php';
 
 <section>
 
-   <img src="images/little_banner.png" alt="" style="width:1160px; height:400px;">
+   <img src="images/little_banner.png" alt="" style="width:1160px; height:400px; border-radius: 20px;">
 
 </section>
 
