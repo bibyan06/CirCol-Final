@@ -1,5 +1,4 @@
 <?php
-
 include '../components/connect.php';
 
 session_start();
@@ -25,7 +24,6 @@ if (isset($_GET['delete'])) {
     $delete_order->execute([$delete_id]);
     header('location:placed_orders.php');
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -50,8 +48,8 @@ if (isset($_GET['delete'])) {
 <div class="box-container">
 
     <?php
-    $status = "Pending";
-    $select_orders = $conn->prepare("SELECT * FROM `orders`WHERE payment_status = ?");
+    $status = "Completed";
+    $select_orders = $conn->prepare("SELECT * FROM `orders` WHERE payment_status = ?");
     $select_orders->execute([$status]);
     if ($select_orders->rowCount() > 0) {
         while ($fetch_orders = $select_orders->fetch(PDO::FETCH_ASSOC)) {
@@ -66,17 +64,19 @@ if (isset($_GET['delete'])) {
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#receiptModal" data-receipt="<?= $fetch_orders['receipt']; ?>">
             View Receipt
         </button>
+        <p> Pick Up Date: <span><?= $fetch_orders['pickup_date']; ?></span> </p>
+        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#proofPicModal" data-proof-pic="<?= $fetch_orders['proof_pic']; ?>">
+            View Proof
+        </button>
+        <p>Order Status: <span><?= $fetch_orders['payment_status']; ?></span></p>
+        <p>Order Status: <span><?= date('m/d/Y h:i A', strtotime($fetch_orders['proof_date'])); ?></span></p>
         <form action="" method="post">
             <input type="hidden" name="order_id" value="<?= $fetch_orders['id']; ?>">
-            <p>Order Status</p>
-            <select name="payment_status" class="select">
-                <option selected disabled><?= $fetch_orders['payment_status']; ?></option required>
-                <option value="Pending">Pending</option>
-                <option value="To Process">To Process</option>
-            </select>
-            <div class="flex-btn">
+            
+            
+            <!-- <div class="flex-btn">
                 <input type="submit" value="update" class="option-btn" name="update_payment">
-            </div>
+            </div> -->
         </form>
     </div>
     <?php
@@ -90,7 +90,7 @@ if (isset($_GET['delete'])) {
 
 </section>
 
-<!-- Modal -->
+<!-- Receipt Modal -->
 <div class="modal fade" id="receiptModal" tabindex="-1" aria-labelledby="receiptModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -105,6 +105,21 @@ if (isset($_GET['delete'])) {
     </div>
 </div>
 
+<!-- Proof Pic Modal -->
+<div class="modal fade" id="proofPicModal" tabindex="-1" aria-labelledby="proofPicModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="proofPicModalLabel">Proof Picture</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img id="proofPicImage" src="" class="img-fluid" alt="Proof Picture">
+            </div>
+        </div>
+    </div>
+</div>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function () {
@@ -114,6 +129,14 @@ document.addEventListener('DOMContentLoaded', function () {
         var receipt = button.getAttribute('data-receipt');
         var receiptImage = document.getElementById('receiptImage');
         receiptImage.src = '../receipt/' + receipt;
+    });
+
+    var proofPicModal = document.getElementById('proofPicModal');
+    proofPicModal.addEventListener('show.bs.modal', function (event) {
+        var button = event.relatedTarget;
+        var proofPic = button.getAttribute('data-proof-pic');
+        var proofPicImage = document.getElementById('proofPicImage');
+        proofPicImage.src = '../completed_pic/' + proofPic;
     });
 });
 </script>

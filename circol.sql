@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 18, 2024 at 02:45 PM
+-- Generation Time: May 18, 2024 at 08:07 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -38,7 +38,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `name`, `password`) VALUES
-(1, 'admin', '40bd001563085fc35165329ea1ff5c5ecbdbbeef'),
+(1, 'admin', '6216f8a75fd5bb3d5f22b6f9958cdede3fc086c2'),
 (2, 'admin2', '40bd001563085fc35165329ea1ff5c5ecbdbbeef');
 
 -- --------------------------------------------------------
@@ -52,17 +52,10 @@ CREATE TABLE `cart` (
   `user_id` int(100) NOT NULL,
   `pid` int(100) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `price` int(10) NOT NULL,
+  `price` decimal(10,2) NOT NULL,
   `quantity` int(10) NOT NULL,
   `image` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`id`, `user_id`, `pid`, `name`, `price`, `quantity`, `image`) VALUES
-(6, 1, 1, 'Code Blooded Shirt - Black', 180, 4, 'CBB.jpg');
 
 -- --------------------------------------------------------
 
@@ -94,21 +87,22 @@ CREATE TABLE `orders` (
   `method` varchar(50) NOT NULL,
   `address` varchar(500) NOT NULL,
   `total_products` varchar(1000) NOT NULL,
-  `total_price` int(100) NOT NULL,
+  `total_price` decimal(10,2) NOT NULL,
   `placed_on` date NOT NULL DEFAULT current_timestamp(),
-  `payment_status` varchar(20) NOT NULL DEFAULT 'pending',
+  `payment_status` varchar(20) NOT NULL DEFAULT 'Pending',
   `receipt` varchar(50) NOT NULL,
-  `pickup_date` date DEFAULT NULL
+  `pickup_date` date DEFAULT NULL,
+  `proof_pic` varchar(100) DEFAULT NULL,
+  `proof_date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `user_id`, `name`, `number`, `email`, `method`, `address`, `total_products`, `total_price`, `placed_on`, `payment_status`, `receipt`, `pickup_date`) VALUES
-(1, 1, 'Kent Dela Pena', '0912345678', 'kent@gmail.com', 'cash on delivery', 'flat no. Calabanga, Camsur, Kanto, TIWI, ALBAY, Philippines - 263004', 'Code Blooded Shirt - White (250 x 1) - ', 250, '2024-05-18', 'completed', '', NULL),
-(2, 1, 'Kent Dela Pena', '0912345678', 'kent@gmail.com', 'cash on delivery', 'flat no. Calabanga, Camsur, Kanto, TIWI, ALBAY, Philippines - 263004', 'Code Blooded Shirt - White (250 x 1) - ', 250, '2024-05-18', 'pending', '', NULL),
-(3, 1, 'Kent Dela Pena', '0912345678', 'kent@gmail.com', 'credit card', 'flat no. Calabanga, Camsur, Kanto, TIWI, ALBAY, Philippines - 263004', 'Code Blooded Shirt - Black (180 x 5) - Code Blooded Shirt - White (250 x 4) - ', 1900, '2024-05-18', 'pending', '', NULL);
+INSERT INTO `orders` (`id`, `user_id`, `name`, `number`, `email`, `method`, `address`, `total_products`, `total_price`, `placed_on`, `payment_status`, `receipt`, `pickup_date`, `proof_pic`, `proof_date`) VALUES
+(6, 1, 'Kent Dela Pena', '0911111111', 'kent@gmail.com', 'Gcash', 'Daraga, Albay', 'Code Blooded Shirt - White (250.00 x 1) - ', 250.00, '2024-05-18', 'Completed', 'DELA PEÃ‘A, Kent Ar-jay B. (1).JPEG', '2024-05-20', NULL, NULL),
+(7, 1, 'Kent Dela Pena', '0911111111', 'kent@gmail.com', 'Gcash', 'Daraga, Albay', 'Code Blooded Shirt - White (250.00 x 1) - ', 250.00, '2024-05-19', 'For Pick Up', 'Sizes.jpg', '2024-05-21', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -166,17 +160,9 @@ CREATE TABLE `wishlist` (
   `user_id` int(100) NOT NULL,
   `pid` int(100) NOT NULL,
   `name` varchar(100) NOT NULL,
-  `price` int(100) NOT NULL,
+  `price` decimal(10,2) NOT NULL,
   `image` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `wishlist`
---
-
-INSERT INTO `wishlist` (`id`, `user_id`, `pid`, `name`, `price`, `image`) VALUES
-(3, 1, 3, 'Code Blooded Shirt - White', 250, 'CBW.jpg'),
-(4, 1, 4, 'Sir Kit&#39;s Limited Edition ', 250, 'SP.jpg');
 
 --
 -- Indexes for dumped tables
@@ -238,7 +224,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `messages`
@@ -250,7 +236,7 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `products`
