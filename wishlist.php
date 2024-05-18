@@ -70,7 +70,7 @@ if(isset($_GET['delete_all'])){
       <img src="uploaded_img/<?= $fetch_wishlist['image']; ?>" alt="">
       <div class="name"><?= $fetch_wishlist['name']; ?></div>
       <div class="flex">
-         <div class="price">Nrs.<?= $fetch_wishlist['price']; ?>/-</div>
+         <div class="price">Php.<?= $fetch_wishlist['price']; ?>/-</div>
          <input type="number" name="qty" class="qty" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="1">
       </div>
       <input type="submit" value="add to cart" class="btn" name="add_to_cart">
@@ -85,8 +85,13 @@ if(isset($_GET['delete_all'])){
    </div>
 
    <div class="wishlist-total">
+<<<<<<< Updated upstream
       <p>Grand Total : <span>Nrs.<?= $grand_total; ?>/-</span></p>
       <a href="shop.php" class="option-btn">Continue Shopping</a>
+=======
+      <p>Grand Total : <span>Php.<?= $grand_total; ?>/-</span></p>
+      <a href="shop.php" class="option-btn">Continue Shopping.</a>
+>>>>>>> Stashed changes
       <a href="wishlist.php?delete_all" class="delete-btn <?= ($grand_total > 1)?'':'disabled'; ?>" onclick="return confirm('delete all from wishlist?');">delete all item</a>
    </div>
 
