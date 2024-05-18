@@ -198,12 +198,12 @@ var swiper = new Swiper(".products-slider", {
       550: {
         slidesPerView: 2,
       },
-      768: {
-        slidesPerView: 2,
-      },
-      1024: {
-        slidesPerView: 3,
-      },
+      // 768: {
+      //   slidesPerView: 2,
+      // },
+      // 1024: {
+      //   slidesPerView: 3,
+      // },
    },
 });
 

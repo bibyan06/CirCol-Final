@@ -43,9 +43,9 @@ if(isset($_SESSION['user_id'])){
 
       <div class="content">
          <h3>Sir Kit's</h3>
-         <p>Hey There ! I'm Harsh Chaudhary. A Student of BE in Software Engineering Department from NCIT College [Batch : 2023] . I love designing websites and exploring new things. Learning new things is my hobby.</p>
+         <p>Sir Kit's is a group of passionate IT students within the Circle of Unified Information Technology Students (CircUITS) Organization at Bicol University College of Science. We are dedicated to promoting camaraderie and fostering a supportive environment for IT students.</p>
 
-         <p>I would like to thank <a href="https://www.facebook.com/er.ashokbasnet" target="_blank">Er. Ashok Basnet</a> Sir for guiding me through the session and making me able to develop projects like this. </p>
+         <p>Every purchase you make not only supports Sir Kit's but also goes directly back to CircUITS, helping us fund future events and initiatives for IT students like you. Browse our selection on CirCol today and join the movement!</p>
          <a href="contact.php" class="btn">Contact Us</a>
       </div>
 
