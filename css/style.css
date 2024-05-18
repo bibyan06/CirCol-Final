@@ -53,7 +53,7 @@ body{
 section{
    padding:2rem;
    max-width: 1200px;
-   margin:0 auto;
+   margin: 90px auto;
 }
 
 .heading{
@@ -77,6 +77,7 @@ section{
    color:var(--white);
    cursor: pointer;
    text-align: center;
+   border-radius: 20px
 }
 
 .btn:hover,
@@ -256,6 +257,14 @@ a[href="cart.php"] .fas.fa-shopping-cart {
    display: none;
 }
 
+.forgot-password {
+   text-decoration: none;
+   color: inherit;
+}
+
+.forgot-password:hover {
+   color: blue; /* Change the color on hover */
+}
 .home-bg{
    background: url(../images/home-bg.png) no-repeat;
    background-size: cover;
@@ -730,7 +739,7 @@ a[href="cart.php"] .fas.fa-shopping-cart {
    text-align: center;
    background-color: var(--white);
    box-shadow: var(--box-shadow);
-   border-radius: .5rem;
+   border-radius: 2rem;
    border:var(--border);
    max-width: 50rem;
    margin:0 auto;
@@ -966,7 +975,7 @@ a[href="cart.php"] .fas.fa-shopping-cart {
    color: white; /* Optional: set text color */
    /* padding: 20px 0; Adjust padding as needed */
    width: 100%; /* Ensure it takes the full width of the page */
-   height: 200px;
+   height: 214px;
    box-sizing: border-box; /* Ensure padding is included in the height */
 }
 
@@ -976,7 +985,7 @@ a[href="cart.php"] .fas.fa-shopping-cart {
    justify-content: space-between; /* Space out the boxes */
    flex-wrap: wrap; /* Allow wrapping for responsiveness */
    gap: 20px; /* Optional: space between boxes */
-   padding: 10px; /* Adjust padding as needed */
+   padding: 30px; /* Adjust padding as needed */
 }
 
 .footer .box {
