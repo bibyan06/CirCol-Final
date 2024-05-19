@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 18, 2024 at 08:07 PM
+-- Generation Time: May 19, 2024 at 05:17 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -54,8 +54,16 @@ CREATE TABLE `cart` (
   `name` varchar(100) NOT NULL,
   `price` decimal(10,2) NOT NULL,
   `quantity` int(10) NOT NULL,
+  `size` varchar(10) DEFAULT NULL,
   `image` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`id`, `user_id`, `pid`, `name`, `price`, `quantity`, `size`, `image`) VALUES
+(12, 1, 4, 'Sir Kit&#39;s Limited Edition ', 250.00, 1, NULL, 'SP.jpg');
 
 -- --------------------------------------------------------
 
@@ -102,7 +110,11 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`id`, `user_id`, `name`, `number`, `email`, `method`, `address`, `total_products`, `total_price`, `placed_on`, `payment_status`, `receipt`, `pickup_date`, `proof_pic`, `proof_date`) VALUES
 (6, 1, 'Kent Dela Pena', '0911111111', 'kent@gmail.com', 'Gcash', 'Daraga, Albay', 'Code Blooded Shirt - White (250.00 x 1) - ', 250.00, '2024-05-18', 'Completed', 'DELA PEÃ‘A, Kent Ar-jay B. (1).JPEG', '2024-05-20', NULL, NULL),
-(7, 1, 'Kent Dela Pena', '0911111111', 'kent@gmail.com', 'Gcash', 'Daraga, Albay', 'Code Blooded Shirt - White (250.00 x 1) - ', 250.00, '2024-05-19', 'For Pick Up', 'Sizes.jpg', '2024-05-21', NULL, NULL);
+(7, 1, 'Kent Dela Pena', '0911111111', 'kent@gmail.com', 'Gcash', 'Daraga, Albay', 'Code Blooded Shirt - White (250.00 x 1) - ', 250.00, '2024-05-19', 'Completed', 'Sizes.jpg', '2024-05-21', 'Bicol_University.png', '2024-05-18 20:17:34'),
+(8, 1, 'Kent Dela Pena', '0911111111', 'kent@gmail.com', 'Gcash', 'Daraga, Albay', 'Sir Kit\'s Limited Edition  (250.00 x 1) - ', 250.00, '2024-05-19', 'Completed', 'facebook.png', '2024-05-20', 'instagram.png', '2024-05-18 20:30:23'),
+(9, 1, 'Kent Dela Pena', '0911111111', 'kent@gmail.com', 'Gcash', 'Daraga, Albay', 'Sir Kit\'s Limited Edition  (250.00 x 2) - ', 500.00, '2024-05-19', 'Completed', 'gcash.png', '2024-05-20', '2213846_orig.jpg', '2024-05-19 02:36:55'),
+(10, 2, 'Kent Dela Pena', '0911111111', 'kent@gmail.com', 'Gcash', 'Daraga, Albay', 'Code Blooded Shirt - Black (180.00 x 1) - Sir Kit\'s Limited Edition  (250.00 x 3) - ', 930.00, '2024-05-19', 'To Process', '2023_01_03_18_03_IMG_5518.JPG', NULL, NULL, NULL),
+(11, 2, 'Kent Dela Pena', '0911111111', 'kent@gmail.com', 'Gcash', 'Daraga, Albay', 'Code Blooded Shirt - Black (Size: Small) (180.00 x 1) - Lanyard (120.00 x 1) - ', 300.00, '2024-05-19', 'Pending', 'facebook.png', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -127,7 +139,8 @@ CREATE TABLE `products` (
 INSERT INTO `products` (`id`, `name`, `details`, `price`, `image_01`, `category`, `stock`) VALUES
 (1, 'Code Blooded Shirt - Black', 'Black, M', 180.00, 'CBB.jpg', 'Shirt', 100),
 (3, 'Code Blooded Shirt - White', 'White, M', 250.00, 'CBW.jpg', 'Shirt', 100),
-(4, 'Sir Kit&#39;s Limited Edition ', 'Cream, M', 250.00, 'SP.jpg', 'Shirt', 50);
+(4, 'Sir Kit&#39;s Limited Edition ', 'Cream, M', 250.00, 'SP.jpg', 'Shirt', 50),
+(5, 'Lanyard', 'unique', 120.00, 'Screenshot 2024-02-26 6.13.41 PM.png', 'Lanyard', 100);
 
 -- --------------------------------------------------------
 
@@ -147,7 +160,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`) VALUES
-(1, 'Kent Dela PeÃ±a', 'kent@gmail.com', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220');
+(1, 'Kent Dela', 'kent@gmail.com', '$2y$10$g.8tsCRqxL9Gf/0eHGRYhu1.1j7EYDXLaaUGrS6gFi2'),
+(2, 'Kent Dela Pena 2', 'kent2@gmail.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef');
 
 -- --------------------------------------------------------
 
@@ -161,7 +175,8 @@ CREATE TABLE `wishlist` (
   `pid` int(100) NOT NULL,
   `name` varchar(100) NOT NULL,
   `price` decimal(10,2) NOT NULL,
-  `image` varchar(100) NOT NULL
+  `image` varchar(100) NOT NULL,
+  `size` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -224,7 +239,7 @@ ALTER TABLE `admins`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `messages`
@@ -236,25 +251,25 @@ ALTER TABLE `messages`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
