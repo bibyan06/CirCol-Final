@@ -41,7 +41,7 @@
          ?>
          <p><?= $fetch_profile['name']; ?></p>
          <a href="../admin/update_profile.php" class="btn">Update Profile</a>
-         <a href="../components/admin_logout.php" class="delete-btn" onclick="return confirm('Are you sure you want to log out?');">logout</a> 
+         <a href="../components/admin_logout.php" class="delete-btn" onclick="return confirm('Are you sure you want to log out?');">Logout</a> 
       </div>
 
    </section>

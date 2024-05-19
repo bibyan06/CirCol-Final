@@ -122,7 +122,7 @@ if(isset($_GET['delete'])){
    <?php
          }
       }else{
-         echo '<p class="empty">no orders to set pick up date!</p>';
+         echo '<p class="empty">No orders to set pick up date!</p>';
       }
    ?>
 
