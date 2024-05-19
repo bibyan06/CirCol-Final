@@ -60,7 +60,7 @@ if(isset($_SESSION['user_id'])){
       <p>Address : <span><?= $fetch_orders['address']; ?></span></p>
       <p>Payment Method : <span><?= $fetch_orders['method']; ?></span></p>
       <p>Your orders : <span><?= $fetch_orders['total_products']; ?></span></p>
-      <p>Total price : <span>Php.<?= $fetch_orders['total_price']; ?></span></p>
+      <p>Total price : <span>Php. <?= $fetch_orders['total_price']; ?></span></p>
       <!-- <p> Order status : <span style="color:<?php if($fetch_orders['payment_status'] == 'Pending'){ echo 'red'; }else{ echo 'green'; }; ?>"><?= $fetch_orders['payment_status']; ?></span> </p> -->
       <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#receiptModal" data-receipt="<?= $fetch_orders['receipt']; ?>" style="height:30px;font-size: 15px;">
             View Receipt
@@ -101,7 +101,7 @@ if(isset($_SESSION['user_id'])){
       <p>Address : <span><?= $fetch_orders['address']; ?></span></p>
       <p>Payment Method : <span><?= $fetch_orders['method']; ?></span></p>
       <p>Your orders : <span><?= $fetch_orders['total_products']; ?></span></p>
-      <p>Total price : <span>Php.<?= $fetch_orders['total_price']; ?></span></p>
+      <p>Total price : <span>Php. <?= $fetch_orders['total_price']; ?></span></p>
       <!-- <p> Order status : <span style="color:<?php if($fetch_orders['payment_status'] == 'Pending'){ echo 'red'; }else{ echo 'green'; }; ?>"><?= $fetch_orders['payment_status']; ?></span> </p> -->
       <p> Pick Up Date: <span><?= $fetch_orders['pickup_date']; ?></span> </p>
       <p>Order Status: <span><?= $fetch_orders['payment_status']; ?></span></p>
@@ -137,7 +137,7 @@ if(isset($_SESSION['user_id'])){
       <p>Address : <span><?= $fetch_orders['address']; ?></span></p>
       <p>Payment Method : <span><?= $fetch_orders['method']; ?></span></p>
       <p>Your orders : <span><?= $fetch_orders['total_products']; ?></span></p>
-      <p>Total price : <span>Php.<?= $fetch_orders['total_price']; ?></span></p>
+      <p>Total price : <span>Php. <?= $fetch_orders['total_price']; ?></span></p>
       
       <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#proofPicModal" data-proof-pic="<?= $fetch_orders['proof_pic']; ?>" style="height:30px;font-size: 15px;">
             View Proof
