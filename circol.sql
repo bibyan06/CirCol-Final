@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2024 at 06:11 AM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: May 19, 2024 at 06:51 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -113,6 +113,22 @@ CREATE TABLE `products` (
   `stock` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `name`, `details`, `price`, `image_01`, `category`, `stock`) VALUES
+(1, 'Code Blooded Shirt - Black', 'Material: Cotton ', 250.00, 'info_tech_black.png', 'Shirt', 50),
+(2, 'Code Blooded Shirt - White', 'Material: Cotton', 250.00, 'info_tech_white.png', 'Shirt', 60),
+(3, 'Code Blooded Limited Edition - Cream', 'Material: Cotton ', 260.00, 'circuits_limited_edition.png', 'Shirt', 20),
+(4, 'Lanyard Ver 1', 'Size: 16 inch ', 160.00, 'lanyard.png', 'Lanyard', 50),
+(5, 'Lanyard Ver 2', 'Size: 16 inch ', 160.00, 'lanyard01.png', 'Lanyard', 100),
+(6, 'Lanyard Ver 3', 'Size: 16 inch ', 160.00, 'lanyard02.png', 'Lanyard', 60),
+(7, 'Lanyard Ver 4', 'Size: 16 inch ', 160.00, 'lanyard03.png', 'Lanyard', 50),
+(8, 'Sir Kit&#39;s Hoodie - Black', 'Material: Cotton', 500.00, 'sirkits_hoodie.png', 'Others', 5),
+(9, 'Sir Kits Button Pin - Iska', 'Material: Plastic', 65.00, 'button_pin.png', 'Others', 50),
+(10, 'Sir Kit&#39;s Keystrap', 'Size: 6 inch', 100.00, 'keystrap.png', 'Others', 40);
+
 -- --------------------------------------------------------
 
 --
@@ -125,6 +141,13 @@ CREATE TABLE `users` (
   `email` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`) VALUES
+(1, 'Vivian', 'vivianvivo@user.com', 'ade664fc0909e704f8efa625c7ca3385fcfd93b8');
 
 -- --------------------------------------------------------
 
@@ -220,13 +243,13 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `wishlist`

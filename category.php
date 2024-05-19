@@ -71,7 +71,7 @@ include 'components/wishlist_cart.php';
    <?php
       }
    }else{
-      echo '<p class="empty">no products found!</p>';
+      echo '<p class="empty">No products found!</p>';
    }
    ?>
 
