@@ -71,7 +71,7 @@ if(isset($_POST['update_qty'])){
       <a href="quick_view.php?pid=<?= $fetch_cart['pid']; ?>" class="fas fa-eye"></a>
       <img src="uploaded_img/<?= $fetch_cart['image']; ?>" alt="">
       <?php if($fetch_cart['category'] === 'Shirt'): ?>
-         <div class="name"><?= $fetch_cart['name']; ?> <br>[Size: <?= $fetch_cart['size']; ?>]</div>
+         <div class="name"><?= $fetch_cart['name']; ?> <br><h5>[Size: <?= $fetch_cart['size']; ?>]</h5></div>
       <?php endif; ?>
       <?php if($fetch_cart['category'] !== 'Shirt'): ?>
          <div class="name"><?= $fetch_cart['name']; ?></div>
