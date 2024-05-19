@@ -68,11 +68,19 @@ if(isset($_GET['delete_all'])){
       <input type="hidden" name="image" value="<?= $fetch_wishlist['image']; ?>">
       <a href="quick_view.php?pid=<?= $fetch_wishlist['pid']; ?>" class="fas fa-eye"></a>
       <img src="uploaded_img/<?= $fetch_wishlist['image']; ?>" alt="">
-      <div class="name"><?= $fetch_wishlist['name']; ?></div>
+      <?php if($fetch_wishlist['size'] !== null): ?>
+         <div class="name"><?= $fetch_wishlist['name']; ?> </div>
+         <h2>Size: <?= $fetch_wishlist['size']; ?></h2>
+         <input type="hidden" name="size" value="<?= $fetch_wishlist['size']; ?>">
+      <?php endif; ?>
+      <?php if($fetch_wishlist['size'] === null): ?>
+         <div class="name"><?= $fetch_wishlist['name']; ?></div>
+      <?php endif; ?>
       <div class="flex">
          <div class="price">Php.<?= $fetch_wishlist['price']; ?></div>
          <input type="number" name="qty" class="qty" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="1">
       </div>
+<<<<<<< HEAD
       <?php if($fetch_wishlist['category'] === 'Shirt'): // Change here ?>
       <div class="sizes">
          <label><input type="radio" name="size" value="Small" required> Small</label>
@@ -80,6 +88,8 @@ if(isset($_GET['delete_all'])){
          <label><input type="radio" name="size" value="Large"> Large</label>
       </div>
       <?php endif; ?>
+=======
+>>>>>>> e40e59de633f8d8fe7ee239d4162d8e56d26d85f
       <input type="submit" value="add to cart" class="btn" name="add_to_cart">
       <input type="submit" value="delete item" onclick="return confirm('delete this from wishlist?');" class="delete-btn" name="delete">
    </form>
