@@ -69,7 +69,7 @@ if (isset($_GET['delete'])) {
             View Proof
         </button>
         <p>Order Status: <span><?= $fetch_orders['payment_status']; ?></span></p>
-        <p>Order Status: <span><?= date('m/d/Y h:i A', strtotime($fetch_orders['proof_date'])); ?></span></p>
+        <p>Completed Date & Time: <span><?= date('m/d/Y h:i A', strtotime($fetch_orders['proof_date'])); ?></span></p>
         <form action="" method="post">
             <input type="hidden" name="order_id" value="<?= $fetch_orders['id']; ?>">
             

@@ -61,7 +61,7 @@ if(isset($_POST['update_qty'])){
 
    <?php
       $grand_total = 0;
-      $select_cart = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ?");
+      $select_cart = $conn->prepare("SELECT c.*, p.category FROM `cart` c JOIN `products` p ON c.pid = p.id WHERE c.user_id = ?");
       $select_cart->execute([$user_id]);
       if($select_cart->rowCount() > 0){
          while($fetch_cart = $select_cart->fetch(PDO::FETCH_ASSOC)){
@@ -70,13 +70,19 @@ if(isset($_POST['update_qty'])){
       <input type="hidden" name="cart_id" value="<?= $fetch_cart['id']; ?>">
       <a href="quick_view.php?pid=<?= $fetch_cart['pid']; ?>" class="fas fa-eye"></a>
       <img src="uploaded_img/<?= $fetch_cart['image']; ?>" alt="">
-      <div class="name"><?= $fetch_cart['name']; ?></div>
+      <?php if($fetch_cart['category'] === 'Shirt'): ?>
+         <div class="name"><?= $fetch_cart['name']; ?> <br>[Size: <?= $fetch_cart['size']; ?>]</div>
+      <?php endif; ?>
+      <?php if($fetch_cart['category'] !== 'Shirt'): ?>
+         <div class="name"><?= $fetch_cart['name']; ?></div>
+      <?php endif; ?>
       <div class="flex">
          <div class="price">Php.<?= $fetch_cart['price']; ?></div>
          <input type="number" name="qty" class="qty" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="<?= $fetch_cart['quantity']; ?>">
          <button type="submit" class="fas fa-edit" name="update_qty"></button>
       </div>
-      <div class="sub-total"> Sub Total : <span>Php.<?= $sub_total = ($fetch_cart['price'] * $fetch_cart['quantity']); ?></span> </div>
+      <input type="text" name="selected_size_<?= $fetch_cart['id']; ?>" value="">
+      <div class="sub-total"> Sub Total : <span>Php<?= $sub_total = ($fetch_cart['price'] * $fetch_cart['quantity']); ?></span> </div>
       <input type="submit" value="delete item" onclick="return confirm('delete this from cart?');" class="delete-btn" name="delete">
    </form>
    <?php
@@ -97,21 +103,15 @@ if(isset($_POST['update_qty'])){
 
 </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
 <?php include 'components/footer.php'; ?>
 
 <script src="js/script.js"></script>
-
+<script>
+document.querySelectorAll('input[type=radio]').forEach(radio => {
+   radio.addEventListener('change', function() {
+      document.querySelector('input[name="selected_size_' + this.name.split('_')[1] + '"]').value = this.value;
+   });
+});
+</script>
 </body>
 </html>

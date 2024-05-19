@@ -3,6 +3,7 @@
 include '../components/connect.php';
 date_default_timezone_set("Asia/Manila");
 session_start();
+$today = date('Y-m-d');
 
 $admin_id = $_SESSION['admin_id'];
 
@@ -113,7 +114,7 @@ if(isset($_GET['delete'])){
       <p> Order Status: <span><?= $fetch_orders['payment_status']; ?></span> </p>
       <form action="" method="post">
          <input type="hidden" name="order_id" value="<?= $fetch_orders['id']; ?>">
-         <input type="date" name="pickup_date" required>
+         <input type="date" name="pickup_date" required min="<?= $today ?>">
         <div >
          <input type="submit" value="update" class="option-btn" name="update_date">
         </div>

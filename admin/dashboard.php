@@ -43,35 +43,39 @@ if(!isset($admin_id)){
 
       <div class="box">
          <?php
-            $total_pendings = 0;
+            $total_pendings = 0.0; // Initialize as a float
             $select_pendings = $conn->prepare("SELECT * FROM `orders` WHERE payment_status = ?");
             $select_pendings->execute(['Pending']);
             if($select_pendings->rowCount() > 0){
-               while($fetch_pendings = $select_pendings->fetch(PDO::FETCH_ASSOC)){
-                  $total_pendings += $fetch_pendings['total_price'];
-               }
+                  while($fetch_pendings = $select_pendings->fetch(PDO::FETCH_ASSOC)){
+                     // Explicitly cast to float to ensure correct type
+                     $total_pendings += (float)$fetch_pendings['total_price'];
+                  }
             }
          ?>
-         <h3><span>Php.</span><?= $total_pendings; ?><span></span></h3>
+         <h3><span>PHP</span><?= number_format($total_pendings, 2); ?><span></span></h3>
          <p>Total pendings</p>
          <a href="placed_orders.php" class="btn">See Orders</a>
       </div>
 
+
       <div class="box">
          <?php
-            $total_completes = 0;
+            $total_completes = 0.0; // Initialize as a float
             $select_completes = $conn->prepare("SELECT * FROM `orders` WHERE payment_status = ?");
             $select_completes->execute(['Completed']);
             if($select_completes->rowCount() > 0){
-               while($fetch_completes = $select_completes->fetch(PDO::FETCH_ASSOC)){
-                  $total_completes += $fetch_completes['total_price'];
-               }
+                  while($fetch_completes = $select_completes->fetch(PDO::FETCH_ASSOC)){
+                     // Explicitly cast to float to ensure correct type
+                     $total_completes += (float)$fetch_completes['total_price'];
+                  }
             }
          ?>
-         <h3><span>Php.</span><?= $total_completes; ?><span></span></h3>
+         <h3><span>Php.</span><?= number_format($total_completes, 2); ?><span></span></h3>
          <p>Completed orders</p>
          <a href="completed_orders.php" class="btn">See orders</a>
       </div>
+
 
       <div class="box">
          <?php
