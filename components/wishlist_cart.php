@@ -23,9 +23,9 @@ if(isset($_POST['add_to_wishlist'])){
       $check_cart_numbers->execute([$name, $user_id]);
 
       if($check_wishlist_numbers->rowCount() > 0){
-         $message[] = 'already added to wishlist!';
+         $message[] = 'Item already added to wishlist!';
       }elseif($check_cart_numbers->rowCount() > 0){
-         $message[] = 'already added to cart!';
+         $message[] = 'Item already added to cart!';
       }else{
          // Fetch product category from your database, assuming you have a table named `products` with a `category` column
       $check_product_category = $conn->prepare("SELECT category FROM `products` WHERE id = ?");
@@ -39,12 +39,12 @@ if(isset($_POST['add_to_wishlist'])){
          // Insert size only if the category is 'Shirt'
          $insert_wishlist = $conn->prepare("INSERT INTO `wishlist`(user_id, pid, name, price, image, size) VALUES(?,?,?,?,?,?)");
          $insert_wishlist->execute([$user_id, $pid, $name, $price, $image, $size]);
-         $message[] = 'added to wishlist!';
+         $message[] = 'Item added to wishlist!';
       } else {
          // If the category is not 'Shirt', insert without size
          $insert_wishlist = $conn->prepare("INSERT INTO `wishlist`(user_id, pid, name, price, image) VALUES(?,?,?,?,?)");
          $insert_wishlist->execute([$user_id, $pid, $name, $price, $image]);
-         $message[] = 'added to wishlist!';
+         $message[] = 'Item added to wishlist!';
       }
          
       }
@@ -98,12 +98,12 @@ if(isset($_POST['add_to_cart'])){
             // Insert size only if the category is 'Shirt'
             $insert_cart = $conn->prepare("INSERT INTO `cart`(user_id, pid, name, price, quantity, size, image) VALUES(?,?,?,?,?,?,?)");
             $insert_cart->execute([$user_id, $pid, $name, $price, $qty, $size, $image]);
-            $message[] = 'added to cart!';
+            $message[] = 'Item added to cart!';
          } else {
             // If the category is not 'Shirt', insert without size
             $insert_cart = $conn->prepare("INSERT INTO `cart`(user_id, pid, name, price, quantity, image) VALUES(?,?,?,?,?,?)");
             $insert_cart->execute([$user_id, $pid, $name, $price, $qty, $image]);
-            $message[] = 'added to cart!';
+            $message[] = 'Item added to cart!';
          }
          
          
