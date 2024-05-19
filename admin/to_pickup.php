@@ -44,7 +44,7 @@ if(isset($_POST['update_completed'])){
       // Update query to include proof_pic and proof_date
       $update_payment_complete = $conn->prepare("UPDATE `orders` SET payment_status = ?, proof_pic = ?, proof_date = ? WHERE id = ?");
       $update_payment_complete->execute([$payment_status_complete, $proof_pic, $proof_date, $order_id]);
-      $message[] = 'Payment status and proof of receive updated!';
+      $message[] = 'Payment status and proof of purchase updated!';
    } else {
       $message[] = 'Failed to upload proof picture!';
    }
@@ -93,7 +93,7 @@ if(isset($_GET['delete'])){
 
 <section class="orders">
 
-<h1 class="heading">To Set Pick Up Date</h1>
+<h1 class="heading">Set Pick Up Date</h1>
 
 <div class="box-container">
 
@@ -150,11 +150,11 @@ if(isset($_GET['delete'])){
       <p> Number : <span><?= $fetch_orders['number']; ?></span> </p>
       <p> Address : <span><?= $fetch_orders['address']; ?></span> </p>
       <p> Total products : <span><?= $fetch_orders['total_products']; ?></span> </p>
-      <p> Total price : <span>Php <?= $fetch_orders['total_price']; ?></span> </p>
+      <p> Total price : <span>Php. <?= $fetch_orders['total_price']; ?></span> </p>
       <p> Pick Up Date: <span><?= $fetch_orders['pickup_date']; ?></span> </p>
       <form action="" method="post" enctype="multipart/form-data">
          <input type="hidden" name="order_id" value="<?= $fetch_orders['id']; ?>">
-         <p>Proof of Receive</p>
+         <p>Proof of Purchase</p>
          <input type="file" name="proof_pic" required>
          <p>Order Status</p>
          <select name="payment_status_complete" class="select" required>

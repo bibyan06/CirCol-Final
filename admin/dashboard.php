@@ -53,7 +53,7 @@ if(!isset($admin_id)){
                   }
             }
          ?>
-         <h3><span>PHP</span><?= number_format($total_pendings, 2); ?><span></span></h3>
+         <h3><span>Php. </span><?= number_format($total_pendings, 2); ?><span></span></h3>
          <p>Total pendings</p>
          <a href="placed_orders.php" class="btn">See Orders</a>
       </div>
@@ -71,7 +71,7 @@ if(!isset($admin_id)){
                   }
             }
          ?>
-         <h3><span>Php.</span><?= number_format($total_completes, 2); ?><span></span></h3>
+         <h3><span>Php. </span><?= number_format($total_completes, 2); ?><span></span></h3>
          <p>Completed orders</p>
          <a href="completed_orders.php" class="btn">See orders</a>
       </div>
