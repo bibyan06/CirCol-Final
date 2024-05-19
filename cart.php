@@ -81,9 +81,6 @@ if(isset($_POST['update_qty'])){
          <input type="number" name="qty" class="qty" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="<?= $fetch_cart['quantity']; ?>">
          <button type="submit" class="fas fa-edit" name="update_qty"></button>
       </div>
-      <?php if($fetch_cart['category'] === 'Shirt'): ?>
-      
-      <?php endif; ?>
       <input type="text" name="selected_size_<?= $fetch_cart['id']; ?>" value="">
       <div class="sub-total"> Sub Total : <span>Php<?= $sub_total = ($fetch_cart['price'] * $fetch_cart['quantity']); ?></span> </div>
       <input type="submit" value="delete item" onclick="return confirm('delete this from cart?');" class="delete-btn" name="delete">

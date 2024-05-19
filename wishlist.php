@@ -94,7 +94,6 @@ if(isset($_GET['delete_all'])){
    <div class="wishlist-total">
       <p>Grand Total : <span>Php.<?= $grand_total; ?></span></p>
       <a href="shop.php" class="option-btn">Continue Shopping.</a>
->>>>>>> Stashed changes
       <a href="wishlist.php?delete_all" class="delete-btn <?= ($grand_total > 1)?'':'disabled'; ?>" onclick="return confirm('delete all from wishlist?');">delete all item</a>
    </div>
 

@@ -45,15 +45,15 @@ if(isset($_POST['order'])){
 
           if($insert_order){
              if($image_size_01 > 2000000){
-                $message[] = 'image size is too large!';
+                $message[] = 'Image size is too large!';
              }else{
                 move_uploaded_file($image_tmp_name_01, $image_folder_01);
-                $message[] = 'order placed successfully!';
+                $message[] = 'Order Placed successfully!';
                 header('location:orders.php');
              }
           }
        } else {
-          $message[] = 'your cart is empty';
+          $message[] = 'Your cart is Empty';
        }
    } else {
        $message[] = 'Please upload a receipt.';
@@ -122,7 +122,7 @@ if(isset($_POST['order'])){
          </div>
          <div class="inputBox">
             <span>Phone Number :</span>
-            <input type="number" name="number" placeholder="Enter your number" class="box" min="0" max="9999999999" onkeypress="if(this.value.length == 10) return false;" required>
+            <input type="text" name="number" placeholder="Enter your phone number" class="box" min="0" max="99999999999" onkeypress="if(this.value.length == 11) return false;" required>
          </div>
          <div class="inputBox">
             <span>Email :</span>
@@ -131,14 +131,14 @@ if(isset($_POST['order'])){
          <input type="hidden" name="method" value="Gcash">
          <div class="inputBox">
             <span>Address :</span>
-            <input type="text" name="address" placeholder="e.g. House Number" class="box" maxlength="50" required>
+            <input type="text" name="address" placeholder="Legazpi, Albay" class="box" maxlength="50" required>
          </div>
          <div class="inputBox">
-            <span>Gcash Receipt :</span>
-            <img class="box" src="./images/gcash_qr.jpg" alt="Gcash_QR">
+            <span>GCash QR Code :</span>
+            <img class="box" src="./images/gcash_qr.jpg" alt="Gcash_QR" style="width:450px; height: 550px;">
          </div>
          <div class="inputBox">
-            <span>Gcash Receipt :</span>
+            <span>GCash Receipt :</span>
             <input type="file" name="receipt" class="box" required>
          </div>
       </div>

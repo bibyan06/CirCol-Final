@@ -61,11 +61,11 @@ if (isset($_GET['delete'])) {
         <p> Address : <span><?= $fetch_orders['address']; ?></span> </p>
         <p> Total products : <span><?= $fetch_orders['total_products']; ?></span> </p>
         <p> Total price : <span>Php.<?= $fetch_orders['total_price']; ?></span> </p>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#receiptModal" data-receipt="<?= $fetch_orders['receipt']; ?>">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#receiptModal" data-receipt="<?= $fetch_orders['receipt']; ?>" style="height:30px;font-size: 15px;">
             View Receipt
         </button>
         <p> Pick Up Date: <span><?= $fetch_orders['pickup_date']; ?></span> </p>
-        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#proofPicModal" data-proof-pic="<?= $fetch_orders['proof_pic']; ?>">
+        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#proofPicModal" data-proof-pic="<?= $fetch_orders['proof_pic']; ?>" style="height:30px;font-size: 15px;">
             View Proof
         </button>
         <p>Order Status: <span><?= $fetch_orders['payment_status']; ?></span></p>
