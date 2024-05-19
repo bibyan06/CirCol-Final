@@ -80,6 +80,16 @@ if(isset($_GET['delete_all'])){
          <div class="price">Php.<?= $fetch_wishlist['price']; ?></div>
          <input type="number" name="qty" class="qty" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="1">
       </div>
+<<<<<<< HEAD
+      <?php if($fetch_wishlist['category'] === 'Shirt'): // Change here ?>
+      <div class="sizes">
+         <label><input type="radio" name="size" value="Small" required> Small</label>
+         <label><input type="radio" name="size" value="Medium"> Medium</label>
+         <label><input type="radio" name="size" value="Large"> Large</label>
+      </div>
+      <?php endif; ?>
+=======
+>>>>>>> e40e59de633f8d8fe7ee239d4162d8e56d26d85f
       <input type="submit" value="add to cart" class="btn" name="add_to_cart">
       <input type="submit" value="delete item" onclick="return confirm('delete this from wishlist?');" class="delete-btn" name="delete">
    </form>
@@ -92,24 +102,12 @@ if(isset($_GET['delete_all'])){
    </div>
 
    <div class="wishlist-total">
-      <p>Grand Total : <span>Php.<?= $grand_total; ?></span></p>
-      <a href="shop.php" class="option-btn">Continue Shopping.</a>
+      <p>Grand Total : <span>Php. <?= $grand_total; ?></span></p>
+      <a href="shop.php" class="option-btn">Continue Shopping</a>
       <a href="wishlist.php?delete_all" class="delete-btn <?= ($grand_total > 1)?'':'disabled'; ?>" onclick="return confirm('delete all from wishlist?');">delete all item</a>
    </div>
 
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
 
 <?php include 'components/footer.php'; ?>
 

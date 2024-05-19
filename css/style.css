@@ -21,6 +21,7 @@
    box-sizing: border-box;
    outline: none; border:none;
    text-decoration: none;
+   
 }
 
 *::selection{
@@ -232,7 +233,8 @@ a[href="cart.php"] .fas.fa-shopping-cart {
 
 .header .flex .profile{
    position: absolute;
-   top:120%; right:2rem;
+   top:120%;
+   right:23rem;
    background-color: var(--white);
    border-radius: .5rem;
    box-shadow: var(--box-shadow);

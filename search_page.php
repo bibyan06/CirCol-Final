@@ -46,6 +46,23 @@ include 'components/wishlist_cart.php';
 
    <?php
      if(isset($_POST['search_box']) OR isset($_POST['search_btn'])){
+<<<<<<< HEAD
+     $search_box = $_POST['search_box'];
+
+     $query ="SELECT * FROM products WHERE 
+              name LIKE :search 
+              OR details LIKE :search 
+              OR price LIKE :search 
+              OR image_01 LIKE :search 
+              OR category LIKE :search 
+              OR stock LIKE :search";
+
+     $select_products = $conn->prepare($query); 
+     $select_products->bindValue(':search', '%' . $search_box . '%');
+     $select_products->execute();
+     if($select_products->rowCount() > 0){
+      while($fetch_product = $select_products->fetch(PDO::FETCH_ASSOC)){
+=======
       $search_box = $_POST['search_box'];
       // Prepare the query with placeholders to prevent SQL injection
       $query = "SELECT * FROM `products` WHERE 
@@ -61,7 +78,9 @@ include 'components/wishlist_cart.php';
       $select_products->execute();
       if($select_products->rowCount() > 0){
           while($fetch_product = $select_products->fetch(PDO::FETCH_ASSOC)){
+>>>>>>> e40e59de633f8d8fe7ee239d4162d8e56d26d85f
    ?>
+
    <form action="" method="post" class="box">
       <input type="hidden" name="pid" value="<?= $fetch_product['id']; ?>">
       <input type="hidden" name="name" value="<?= $fetch_product['name']; ?>">
@@ -73,7 +92,6 @@ include 'components/wishlist_cart.php';
       <div class="name"><?= $fetch_product['name']; ?></div>
       <div class="flex">
          <div class="price"><span>Php. </span><?= $fetch_product['price']; ?><span></span></div>
-         <div class="price"><span>Php.</span><?= $fetch_product['price']; ?><span></span></div>
          <input type="number" name="qty" class="qty" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="1">
       </div>
       <?php if($fetch_product['category'] === 'Shirt'): ?>
@@ -96,17 +114,6 @@ include 'components/wishlist_cart.php';
    </div>
 
 </section>
-
-
-
-
-
-
-
-
-
-
-
 
 <?php include 'components/footer.php'; ?>
 

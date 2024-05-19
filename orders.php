@@ -34,7 +34,7 @@ if(isset($_SESSION['user_id'])){
 
 <section class="orders">
 
-   
+<h1 class="heading">Pending Orders</h1>
 
   <?php
       if($user_id == ''){
@@ -48,7 +48,7 @@ if(isset($_SESSION['user_id'])){
                while($fetch_orders = $select_orders->fetch(PDO::FETCH_ASSOC)){
    ?>
 
-   <h1 class="heading">Pending Orders</h1>
+   
 
    <div class="box-container">
 
@@ -72,7 +72,7 @@ if(isset($_SESSION['user_id'])){
    <?php
       }
       }else{
-         echo '<p class="empty">no pending yet!</p>';
+         echo '<p class="empty">No order pending yet!</p>';
       }
       }
    ?>
