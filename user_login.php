@@ -80,13 +80,16 @@ if(isset($_POST['submit'])){
          <i class="fas fa-eye" id="togglePassword"></i>
       </div>
       <input type="submit" value="login now" class="btn" name="submit">
-      <p>Don't have an account?</p>
+      <p style="font-size:19px;">Don't have an account?</p>
       <a href="user_register.php" class="option-btn">Register Now.</a>
+      <p style="font-size:15px;">
+        <a href="forgot_password.php" class="forgot-password">I forgot my Password</a>
+      </p>
    </form>
 
 </section>
 
-<?php include 'components/footer.php'; ?>
+<!-- <?php include 'components/footer.php'; ?> -->
 
 <script src="js/script.js"></script>
 <script>
