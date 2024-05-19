@@ -14,13 +14,13 @@ if (isset($_SESSION['user_id'])) {
 $message = '';
 
 if (isset($_POST['submit'])) {
-   $pass = $_POST['pass'];
-   $cpass = $_POST['cpass'];
+   $pass = sha1($_POST['pass']);
+   $pass = filter_var($pass, FILTER_SANITIZE_STRING);
+   $cpass = sha1($_POST['cpass']);
+   $cpass = filter_var($cpass, FILTER_SANITIZE_STRING);
 
    // Validate password matching
    if ($pass === $cpass) {
-      $pass = password_hash($pass, PASSWORD_DEFAULT);
-
       $update_password = $conn->prepare("UPDATE `users` SET password = ? WHERE id = ?");
       $update_password->execute([$pass, $user_id]);
 

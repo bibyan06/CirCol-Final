@@ -34,6 +34,7 @@ if(isset($_POST['submit'])){
          $insert_user = $conn->prepare("INSERT INTO `users`(name, email, password) VALUES(?,?,?)");
          $insert_user->execute([$name, $email, $cpass]);
          $message[] = 'You are now registered successfully. Log in now';
+         header('Location: user_login.php');
       }
    }
 
