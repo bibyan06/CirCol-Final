@@ -1,15 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700&display=swap');
 
 :root{
-   --main-color:#2980b9;
+   --main-color: #1F4690;
+   --blue: #231955;
    --orange:#f39c12;
+   --yellow: #E8AA42;
+   --light-yellow:#FFE5B4;
    --red:#e74c3c;
    --black:#333;
    --white:#fff;
    --light-color:#666;
    --light-bg:#eee;
    --border:.2rem solid var(--black);
-   --box-shadow:0 .5rem 1rem rgba(0,0,0,.1);
+   --box-shadow:0 .6rem 1rem rgba(0,0,0,.1);
 }
 
 *{
@@ -18,6 +21,7 @@
    box-sizing: border-box;
    outline: none; border:none;
    text-decoration: none;
+   
 }
 
 *::selection{
@@ -50,7 +54,7 @@ body{
 section{
    padding:2rem;
    max-width: 1200px;
-   margin:0 auto;
+   margin: 90px auto;
 }
 
 .heading{
@@ -59,6 +63,7 @@ section{
    margin-bottom: 2rem;
    text-align: center;
    text-transform: uppercase;
+   font-weight: 700;
 }
 
 .btn,
@@ -74,6 +79,7 @@ section{
    color:var(--white);
    cursor: pointer;
    text-align: center;
+   border-radius: 20px
 }
 
 .btn:hover,
@@ -83,7 +89,7 @@ section{
 }
 
 .btn{
-   background-color: var(--main-color);
+   background-color: var(--yellow);
 }
 
 .option-btn{
@@ -151,20 +157,41 @@ section{
       transform: translateY(1rem);
    }
 }
-
-.header{
-   position: sticky;
-   top:0; left:0; right:0;
-   background-color: var(--white);
-   box-shadow: var(--box-shadow);
-   z-index: 1000;
+#menu-btn {
+   color: #ff0000;
 }
 
-.header .flex{
+a[href="search_page.php"] .fas.fa-search {
+   color:  #231955; 
+}
+
+a[href="wishlist.php"] .fas.fa-heart {
+   color: #1F4690   ; 
+}
+
+a[href="cart.php"] .fas.fa-shopping-cart {
+   color: #1F4690; 
+}
+
+#user-btn {
+   color: #1F4690; 
+}
+.header {
+   background-color: var(--light-yellow); 
+   color: white; 
+   padding: 20px 0; 
+   width: 100%; 
+   position: relative; 
+   z-index: 1000; 
+}
+
+.header .flex {
    display: flex;
-   align-items: center;
    justify-content: space-between;
-   position: relative;
+   align-items: center;
+   width: 90%;
+   height: 50px;
+   margin: 0 auto; 
 }
 
 .header .flex .logo{
@@ -179,11 +206,12 @@ section{
 .header .flex .navbar a{
    margin:0 1rem;
    font-size: 2rem;
-   color:var(--black);
+   color:var(--blue);
+   text-decoration: none;
 }
 
 .header .flex .navbar a:hover{
-   color:var(--main-color);
+   color:var(--blue);
    text-decoration: underline;
 }
 
@@ -193,6 +221,7 @@ section{
    font-size: 2.5rem;
    cursor: pointer;
    color:var(--black);
+   text-decoration: none;
 }
 
 .header .flex .icons > *:hover{
@@ -205,7 +234,8 @@ section{
 
 .header .flex .profile{
    position: absolute;
-   top:120%; right:2rem;
+   top:120%;
+   right:23rem;
    background-color: var(--white);
    border-radius: .5rem;
    box-shadow: var(--box-shadow);
@@ -232,10 +262,20 @@ section{
    display: none;
 }
 
+.forgot-password {
+   text-decoration: none;
+   color: inherit;
+}
+
+.forgot-password:hover {
+   color: blue; /* Change the color on hover */
+}
 .home-bg{
-   background:url(../images/home-bg.png) no-repeat;
+   background: url(../images/home-bg.png) no-repeat;
    background-size: cover;
    background-position: center;
+   margin: 15px;
+   border-radius: 20px;
 }
 
 .home-bg .home .slide{
@@ -286,7 +326,7 @@ section{
 .category .slide{
    margin-bottom: 5rem;
    box-shadow: var(--box-shadow);
-   border:var(--border);
+   /* border:var(--border); */
    text-align: center;
    padding:2rem;
    background: var(--white);
@@ -294,7 +334,7 @@ section{
 }
 
 .category .slide:hover{
-   background-color: var(--black);
+   background-color: var(--main-color);
 }
 
 .category .slide:hover img{
@@ -322,8 +362,8 @@ section{
 .home-products .slide{
    position: relative;
    padding:2rem;
-   border-radius: .5rem;
-   border:var(--border);
+   border-radius: 2rem;
+   /* border:var(--border); */
    background-color: var(--white);
    box-shadow: var(--box-shadow);
    margin-bottom: 5rem;
@@ -406,8 +446,8 @@ section{
 
 .quick-view form{
    padding:2rem;
-   border-radius: .5rem;
-   border:var(--border);
+   border-radius: 2rem;
+   /* border:var(--border); */
    background-color: var(--white);
    box-shadow: var(--box-shadow);
    margin-top: 1rem;
@@ -508,8 +548,8 @@ section{
    position: relative;
    background-color: var(--white);
    box-shadow: var(--box-shadow);
-   border-radius: .5rem;
-   border:var(--border);
+   border-radius: 2rem;
+   /* border:var(--border); */
    padding:2rem;
    overflow: hidden;
 }
@@ -589,8 +629,8 @@ section{
 .form-container form{
    background-color: var(--white);
    padding:2rem;
-   border-radius: .5rem;
-   border:var(--border);
+   border-radius: 2rem;
+   /* border:var(--border); */
    box-shadow: var(--box-shadow);
    text-align: center;
    margin:0 auto;
@@ -704,7 +744,7 @@ section{
    text-align: center;
    background-color: var(--white);
    box-shadow: var(--box-shadow);
-   border-radius: .5rem;
+   border-radius: 2rem;
    border:var(--border);
    max-width: 50rem;
    margin:0 auto;
@@ -921,7 +961,7 @@ section{
    border:var(--border);
    background-color: var(--white);
    box-shadow: var(--box-shadow);
-   border-radius: .5rem;
+   border-radius: 2rem;
 }
 
 .orders .box-container .box p{
@@ -935,21 +975,33 @@ section{
    color:var(--main-color);
 }
 
-.footer{
-   background-color: var(--white);
-   /* padding-bottom: 7rem; */
+.footer {
+   background-color: #0e0b63; /* Optional: set a background color */
+   color: white; /* Optional: set text color */
+   /* padding: 20px 0; Adjust padding as needed */
+   width: 100%; /* Ensure it takes the full width of the page */
+   height: 214px;
+   box-sizing: border-box; /* Ensure padding is included in the height */
 }
 
-.footer .grid{
-   display: grid;
-   grid-template-columns: repeat(auto-fit, minmax(27rem, 1fr));
-   gap:1.5rem;
-   align-items: flex-start;
+.footer .grid {
+   display: flex; /* Align children in a row */
+   height: 100px;
+   justify-content: space-between; /* Space out the boxes */
+   flex-wrap: wrap; /* Allow wrapping for responsiveness */
+   gap: 20px; /* Optional: space between boxes */
+   padding: 30px; /* Adjust padding as needed */
+}
+
+.footer .box {
+   flex: 1; /* Ensure boxes are flexible */
+   min-width: 200px; /* Ensure a minimum width */
+   padding: 10px; /* Adjust padding within each box */
 }
 
 .footer .grid .box h3{
    font-size: 2rem;
-   color:var(--black);
+   color:var(--white);
    margin-bottom: 2rem;
    text-transform: capitalize;
 }
@@ -958,12 +1010,12 @@ section{
    display: block;
    margin:1.5rem 0;
    font-size: 1.7rem;
-   color:var(--light-color);
+   color:var(--white);
 }
 
 .footer .grid .box a i{
    padding-right: 1rem;
-   color:var(--main-color);
+   color:var(--light-yellow);
    transition: .2s linear;
 }
 
@@ -975,12 +1027,11 @@ section{
    padding-right: 2rem;
 }
 
-.footer .credit{
-   text-align: center;
-   padding: 2.5rem 2rem;
-   border-top: var(--border);
-   font-size: 2rem;
-   color:var(--black);
+.footer .credit {
+   text-align: center; /* Center the credit text */
+   padding: 10px 0; /* Adjust padding as needed */
+   margin-top: 5px; /* Space above the credit */
+   border-top: 1px solid #bebdbd; /* Optional: border for separation */
 }
 
 .footer .credit span{
@@ -1023,6 +1074,7 @@ section{
    .header .flex .navbar a{
       display: block;
       margin:2rem;
+      text-decoration: none;
    }
 
    .home-bg .home .slide .content{

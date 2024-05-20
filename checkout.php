@@ -21,27 +21,43 @@ if(isset($_POST['order'])){
    $email = filter_var($email, FILTER_SANITIZE_STRING);
    $method = $_POST['method'];
    $method = filter_var($method, FILTER_SANITIZE_STRING);
-   $address = 'flat no. '. $_POST['flat'] .', '. $_POST['street'] .', '. $_POST['city'] .', '. $_POST['state'] .', '. $_POST['country'] .' - '. $_POST['pin_code'];
+   $address = $_POST['address'];
    $address = filter_var($address, FILTER_SANITIZE_STRING);
    $total_products = $_POST['total_products'];
    $total_price = $_POST['total_price'];
 
-   $check_cart = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ?");
-   $check_cart->execute([$user_id]);
+   if (isset($_FILES['receipt'])) {
+       $receipt = $_FILES['receipt']['name'];
+       $receipt = filter_var($receipt, FILTER_SANITIZE_STRING);
+       $image_size_01 = $_FILES['receipt']['size'];
+       $image_tmp_name_01 = $_FILES['receipt']['tmp_name'];
+       $image_folder_01 = './receipt/'.$receipt;
 
-   if($check_cart->rowCount() > 0){
+       $check_cart = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ?");
+       $check_cart->execute([$user_id]);
 
-      $insert_order = $conn->prepare("INSERT INTO `orders`(user_id, name, number, email, method, address, total_products, total_price) VALUES(?,?,?,?,?,?,?,?)");
-      $insert_order->execute([$user_id, $name, $number, $email, $method, $address, $total_products, $total_price]);
+       if($check_cart->rowCount() > 0){
+          $insert_order = $conn->prepare("INSERT INTO `orders`(user_id, name, number, email, method, address, total_products, total_price, receipt) VALUES(?,?,?,?,?,?,?,?,?)");
+          $insert_order->execute([$user_id, $name, $number, $email, $method, $address, $total_products, $total_price, $receipt ]);
 
-      $delete_cart = $conn->prepare("DELETE FROM `cart` WHERE user_id = ?");
-      $delete_cart->execute([$user_id]);
+          $delete_cart = $conn->prepare("DELETE FROM `cart` WHERE user_id = ?");
+          $delete_cart->execute([$user_id]);
 
-      $message[] = 'order placed successfully!';
-   }else{
-      $message[] = 'your cart is empty';
+          if($insert_order){
+             if($image_size_01 > 2000000){
+                $message[] = 'Image size is too large!';
+             }else{
+                move_uploaded_file($image_tmp_name_01, $image_folder_01);
+                $message[] = 'Order Placed successfully!';
+                header('location:orders.php');
+             }
+          }
+       } else {
+          $message[] = 'Your cart is Empty';
+       }
+   } else {
+       $message[] = 'Please upload a receipt.';
    }
-
 }
 
 ?>
@@ -52,14 +68,13 @@ if(isset($_POST['order'])){
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>checkout</title>
+   <title>Checkout</title>
    
-   <!-- font awesome cdn link  -->
+   <!-- Font Awesome CDN link -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
-   <!-- custom css file link  -->
+   <!-- Custom CSS file link -->
    <link rel="stylesheet" href="css/style.css">
-
 </head>
 <body>
    
@@ -67,101 +82,72 @@ if(isset($_POST['order'])){
 
 <section class="checkout-orders">
 
-   <form action="" method="POST">
+   <form action="" method="POST" enctype="multipart/form-data">
 
    <h3>Your Orders</h3>
 
       <div class="display-orders">
       <?php
          $grand_total = 0;
-         $cart_items[] = '';
+         $cart_items = [];
          $select_cart = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ?");
          $select_cart->execute([$user_id]);
          if($select_cart->rowCount() > 0){
             while($fetch_cart = $select_cart->fetch(PDO::FETCH_ASSOC)){
-               $cart_items[] = $fetch_cart['name'].' ('.$fetch_cart['price'].' x '. $fetch_cart['quantity'].') - ';
+               // Fetch the selected size for the current cart item
+               $size = $fetch_cart['size'];
+               $item_name_with_size = $fetch_cart['name'] . ($size ? ' (Size: ' . $size . ')' : '');
+               $cart_items[] = $item_name_with_size . ' (' . $fetch_cart['price'] . ' x ' . $fetch_cart['quantity'] . ') - ';
                $total_products = implode($cart_items);
                $grand_total += ($fetch_cart['price'] * $fetch_cart['quantity']);
       ?>
-         <p> <?= $fetch_cart['name']; ?> <span>(<?= '$'.$fetch_cart['price'].'/- x '. $fetch_cart['quantity']; ?>)</span> </p>
+         <p> <?= $item_name_with_size; ?> <span>(<?= 'Php. ' . $fetch_cart['price'] . ' x ' . $fetch_cart['quantity']; ?>)</span> </p>
       <?php
             }
-         }else{
+         } else {
             echo '<p class="empty">your cart is empty!</p>';
          }
       ?>
          <input type="hidden" name="total_products" value="<?= $total_products; ?>">
-         <input type="hidden" name="total_price" value="<?= $grand_total; ?>" value="">
-         <div class="grand-total">Grand Total : <span>Nrs.<?= $grand_total; ?>/-</span></div>
+         <input type="hidden" name="total_price" value="<?= $grand_total; ?>">
+         <div class="grand-total">Grand Total : <span>Php. <?= $grand_total; ?></span></div>
       </div>
 
-      <h3>place your orders</h3>
+      <h3>Place Your Orders</h3>
 
       <div class="flex">
          <div class="inputBox">
-            <span>Tapaiko subh nam :</span>
-            <input type="text" name="name" placeholder="enter your name" class="box" maxlength="20" required>
+            <span>Full Name :</span>
+            <input type="text" name="name" placeholder="Enter your name" class="box" maxlength="20" required>
          </div>
          <div class="inputBox">
-            <span>Your Number :</span>
-            <input type="number" name="number" placeholder="enter your number" class="box" min="0" max="9999999999" onkeypress="if(this.value.length == 10) return false;" required>
+            <span>Phone Number :</span>
+            <input type="text" name="number" placeholder="Enter your phone number" class="box" min="0" max="99999999999" onkeypress="if(this.value.length == 11) return false;" required>
          </div>
          <div class="inputBox">
-            <span>Your Email :</span>
-            <input type="email" name="email" placeholder="enter your email" class="box" maxlength="50" required>
+            <span>Email :</span>
+            <input type="email" name="email" placeholder="Enter your email" class="box" maxlength="50" required>
+         </div>
+         <input type="hidden" name="method" value="Gcash">
+         <div class="inputBox">
+            <span>Address :</span>
+            <input type="text" name="address" placeholder="Legazpi, Albay" class="box" maxlength="50" required>
          </div>
          <div class="inputBox">
-            <span>kasari halnuhunx paisa? :</span>
-            <select name="method" class="box" required>
-               <option value="cash on delivery">Cash On Delivery</option>
-               <option value="credit card">Credit Card</option>
-               <option value="paytm">eSewa</option>
-               <option value="paypal">Khalti</option>
-            </select>
+            <span>GCash QR Code :</span>
+            <img class="box" src="./images/gcash_qr.jpg" alt="Gcash_QR" style="width:450px; height: 550px;">
          </div>
          <div class="inputBox">
-            <span>Address line 01 :</span>
-            <input type="text" name="flat" placeholder="e.g. Flat number" class="box" maxlength="50" required>
-         </div>
-         <div class="inputBox">
-            <span>Address line 02 :</span>
-            <input type="text" name="street" placeholder="Street name" class="box" maxlength="50" required>
-         </div>
-         <div class="inputBox">
-            <span>City :</span>
-            <input type="text" name="city" placeholder="Kathmandu" class="box" maxlength="50" required>
-         </div>
-         <div class="inputBox">
-            <span>Province:</span>
-            <input type="text" name="state" placeholder="Bagmati" class="box" maxlength="50" required>
-         </div>
-         <div class="inputBox">
-            <span>Country :</span>
-            <input type="text" name="country" placeholder="Nepal" class="box" maxlength="50" required>
-         </div>
-         <div class="inputBox">
-            <span>ZIP CODE :</span>
-            <input type="number" min="0" name="pin_code" placeholder="e.g. 56400" min="0" max="999999" onkeypress="if(this.value.length == 6) return false;" class="box" required>
+            <span>GCash Receipt :</span>
+            <input type="file" name="receipt" class="box" required>
          </div>
       </div>
-
-      <input type="submit" name="order" class="btn <?= ($grand_total > 1)?'':'disabled'; ?>" value="place order">
+      
+      <input type="submit" name="order" class="btn <?= ($grand_total > 1)?'':'disabled'; ?>" value="Place Order">
 
    </form>
 
 </section>
-
-
-
-
-
-
-
-
-
-
-
-
 
 <?php include 'components/footer.php'; ?>
 

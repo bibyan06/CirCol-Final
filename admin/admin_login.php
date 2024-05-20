@@ -57,10 +57,10 @@ if(isset($_POST['submit'])){
 <section class="form-container">
 
    <form action="" method="post">
+      <img src="../images/login-banner.png" alt="Login Icon" style="vertical-align: middle; width: 200px; height: 150px;">
       <h3>Login now</h3>
-      <p>Default username = <span>admin</span> & password = <span>111</span></p>
-      <input type="text" name="name" required placeholder="enter your username" maxlength="20"  class="box" oninput="this.value = this.value.replace(/\s/g, '')">
-      <input type="password" name="pass" required placeholder="enter your password" maxlength="20"  class="box" oninput="this.value = this.value.replace(/\s/g, '')">
+      <input type="text" name="name" required placeholder="Enter username" maxlength="20"  class="box" oninput="this.value = this.value.replace(/\s/g, '')">
+      <input type="password" name="pass" required placeholder="Enter password" maxlength="20"  class="box" oninput="this.value = this.value.replace(/\s/g, '')">
       <input type="submit" value="login now" class="btn" name="submit">
    </form>
 

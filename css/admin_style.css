@@ -1,13 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700&display=swap');
 
 :root{
-   --main-color:#2980b9;
+   --main-color: #1F4690;
+   --blue: #231955;
    --orange:#f39c12;
+   --yellow: #E8AA42;
+   --light-yellow:#FFE5B4;
    --red:#e74c3c;
-   --black:#444;
+   --black:#333;
    --white:#fff;
-   --light-color:#777;
-   --light-bg:#f5f5f5;
+   --light-color:#666;
+   --light-bg:#eee;
    --border:.2rem solid var(--black);
    --box-shadow:0 .5rem 1rem rgba(0,0,0,.1);
 }
@@ -53,13 +56,16 @@ section{
    max-width: 1200px;
    margin:0 auto;
 }
-
+#user-btn {
+   color: var(--white); 
+}
 .heading{
    font-size: 4rem;
    color:var(--black);
    margin-bottom: 2rem;
    text-align: center;
    text-transform: uppercase;
+   font-weight: 700;
 }
 
 .btn,
@@ -192,21 +198,23 @@ section{
    color:var(--black);
 }
 
-.header{
-   position: sticky;
-   top:0; left:0; right:0;
-   background-color: var(--white);
-   box-shadow: var(--box-shadow);
-   z-index: 1000;
+.header {
+   background-color: var(--blue); 
+   color: white; 
+   padding: 20px 0; 
+   width: 100%; 
+   position: relative; 
+   z-index: 1000; 
 }
 
-.header .flex{
+.header .flex {
    display: flex;
-   align-items: center;
    justify-content: space-between;
-   position: relative;
+   align-items: center;
+   width: 90%; 
+   height: 50px;
+   margin: 0 auto; 
 }
-
 .header .flex .logo{
    font-size: 2.5rem;
    color:var(--black);
@@ -219,11 +227,12 @@ section{
 .header .flex .navbar a{
    margin:0 1rem;
    font-size: 2rem;
-   color:var(--black);
+   color:var(--white);
+   text-decoration: none;
 }
 
 .header .flex .navbar a:hover{
-   color:var(--main-color);
+   color:var(--light-yellow);
    text-decoration: underline;
 }
 
@@ -240,7 +249,8 @@ section{
 
 .header .flex .profile{
    position: absolute;
-   top:120%; right:2rem;
+   top:120%; 
+   right:23rem;
    background-color: var(--white);
    border-radius: .5rem;
    box-shadow: var(--box-shadow);
@@ -320,7 +330,7 @@ section{
 
 .add-products form .flex .inputBox{
    flex:1 1 25rem;
-} 
+}
 
 .add-products form span{
    font-size:1.7rem;
@@ -352,8 +362,8 @@ section{
 .show-products .box-container .box{
    background-color: var(--white);
    box-shadow: var(--box-shadow);
-   border-radius: .5rem;
-   border:var(--border);
+   border-radius: 2rem;
+   /* border:var(--border); */
    padding:2rem;
 }
 
@@ -597,6 +607,7 @@ section{
 
    .heading{
       font-size: 3.5rem;
+      
    }
 
    .flex-btn{

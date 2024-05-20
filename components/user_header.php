@@ -15,14 +15,14 @@
 
    <section class="flex">
 
-      <a href="home.php" class="logo">KinBech<span>.Com</span></a>
+      <img href="home.php" src= "images/circol logo.png" alt="Logo" style="vertical-align: middle; width: 150px; height: 50px;">
 
       <nav class="navbar">
          <a href="home.php">Home</a>
-         <a href="about.php">About Us</a>
-         <a href="orders.php">Orders</a>
          <a href="shop.php">Shop Now</a>
+         <a href="orders.php">Orders</a> 
          <a href="contact.php">Contact Us</a>
+         <a href="about.php">About Us</a>
       </nav>
 
       <div class="icons">
@@ -50,16 +50,12 @@
             $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
          ?>
          <p><?= $fetch_profile["name"]; ?></p>
-         <a href="update_user.php" class="btn">Update Profile.</a>
-         <div class="flex-btn">
-            <a href="user_register.php" class="option-btn">Register.</a>
-            <a href="user_login.php" class="option-btn">Login.</a>
-         </div>
-         <a href="components/user_logout.php" class="delete-btn" onclick="return confirm('logout from the website?');">logout</a> 
+         <a href="update_user.php" class="btn">Update Profile</a>
+         <a href="components/user_logout.php" class="delete-btn" onclick="return confirm('Are you sure you want to logout?');">Logout</a> 
          <?php
             }else{
          ?>
-         <p>Please Login Or Register First to proceed !</p>
+         <p>Please Login Or Register first to proceed</p>
          <div class="flex-btn">
             <a href="user_register.php" class="option-btn">Register</a>
             <a href="user_login.php" class="option-btn">Login</a>

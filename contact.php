@@ -25,13 +25,13 @@ if(isset($_POST['send'])){
    $select_message->execute([$name, $email, $number, $msg]);
 
    if($select_message->rowCount() > 0){
-      $message[] = 'already sent message!';
+      $message[] = ' sent message!';
    }else{
 
       $insert_message = $conn->prepare("INSERT INTO `messages`(user_id, name, email, number, message) VALUES(?,?,?,?,?)");
       $insert_message->execute([$user_id, $name, $email, $number, $msg]);
 
-      $message[] = 'sent message successfully!';
+      $message[] = 'Message sent successfully!';
 
    }
 
@@ -62,11 +62,11 @@ if(isset($_POST['send'])){
 <section class="contact">
 
    <form action="" method="post">
-      <h3>Get in touch.</h3>
-      <input type="text" name="name" placeholder="enter your name" required maxlength="20" class="box">
-      <input type="email" name="email" placeholder="enter your email" required maxlength="50" class="box">
-      <input type="number" name="number" min="0" max="9999999999" placeholder="enter your number" required onkeypress="if(this.value.length == 10) return false;" class="box">
-      <textarea name="msg" class="box" placeholder="enter your message" cols="30" rows="10"></textarea>
+      <h3>GET IN TOUCH</h3>
+      <input type="text" name="name" placeholder="Enter name" required maxlength="20" class="box">
+      <input type="email" name="email" placeholder="Enter email" required maxlength="50" class="box">
+      <input type="text" name="number" min="0" max="99999999999" placeholder="Enter your phone number" required onkeypress="if(this.value.length == 10) return false;" class="box">
+      <textarea name="msg" class="box" placeholder="Enter your message" cols="30" rows="10"></textarea>
       <input type="submit" value="send message" name="send" class="btn">
    </form>
 
